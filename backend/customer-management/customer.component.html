@@ -1,0 +1,44 @@
+<!-- table4 -->
+<div class="outer-w3-agile mt-3">
+  <h4 class="tittle-w3-agileits mb-4">Customers List</h4>
+  <button class="btn btn-primary" style="margin-bottom:5px;" [routerLink]="['/admin/customer-management/add-customer']">Add Customer</button>
+  <div class="table-responsive" style="height:300px;">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col"> First Name</th>
+          <th scope="col"> Last Name</th>
+          <th scope="col"> Email </th>
+          <th scope="col"> Mobile</th>
+          <th scope="col"> Location </th>
+          <th scope="col"> Pin Code </th>
+          <th scope="col"> Address Line1 </th>
+          <th scope="col"> Address Line2 </th>
+
+          <th>Status</th>
+          <th>Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of allCustomerByUser">
+          <td>{{item.firstName}}</td>
+          <td>{{item.lastName}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.mobile}}</td>
+          <td>{{item.workLocation}}</td>
+          <td>{{item.pincode}}</td>
+          <td>{{item.addressLine1}}</td>
+          <td>{{item.addressLine2}}</td>
+          <td>{{item.status == 1 ? 'Active' : 'Inactive'}}</td>
+          <td>
+            <button class="btn btn-primary" [routerLink]="['/admin/customer-management/add-customer', item.userID]">Edit</button>
+            <button class="btn btn-success" *ngIf="item.customerStatus == 2" (click)="deleteCustomer(item.userID, 1)">Active</button>
+            <button class="btn btn-danger" *ngIf="item.customerStatus == 1" (click)="deleteCustomer(item.userID, 2)">Inactive</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!--// table4 -->

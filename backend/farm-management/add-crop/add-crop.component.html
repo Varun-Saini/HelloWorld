@@ -1,0 +1,105 @@
+<!-- Forms-3 -->
+<div class="outer-w3-agile mt-3">
+  <!-- <h4 class="tittle-w3-agileits mb-4" *ngIf="userID">Edit User</h4>
+        <h4 class="tittle-w3-agileits mb-4" *ngIf="!userID">Add User</h4> -->
+  <h4 class="tittle-w3-agileits mb-4">{{CropID ? 'Edit' : 'Add'}} Crop</h4>
+  <form #cropAdd="ngForm" name="crop" (ngSubmit)="addCrop()">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Farm Name</label>
+        <select class="custom-select" name="farm" [(ngModel)]="crops.farm" required>
+          <option value="" selected disabled hidden>Select Farm Name</option>
+          <option *ngFor="let item of farmNameList" [value]="item.farmID">{{item.farmName}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Plot Name</label>
+        <select class="custom-select" name="plot" [(ngModel)]="crops.plot" required>
+          <option value="" selected disabled hidden>Select Plot</option>
+          <option value="1">P1</option>
+          <option value="2">P2</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Crop Name</label>
+        <input class="form-control" name="cropName" [(ngModel)]="crops.cropName" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Session</label>
+        <select class="custom-select" name="month" [(ngModel)]="crops.month" required multiple="multiple">
+          <option value="" selected disabled hidden>Select Session/Months</option>
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+        </select>
+
+      </div>
+
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Crop Stage</label>
+        <br>
+        <input type="radio" name="stage" value="New" [(ngModel)]="crops.stage"> New
+        <input type="radio" name="stage" value="Growing" [(ngModel)]="crops.stage"> Growing
+        <input type="radio" name="stage" value="Harvesting" [(ngModel)]="crops.stage"> Harvesting
+
+      </div>
+      <!--  <div class="form-group col-md-6">
+        <label>Location</label>
+        <select class="custom-select" name="location" [(ngModel)]="farms.location" required>
+          <option value="" selected disabled hidden>Select Location</option>
+          <option *ngFor="let item of locationList" [value]="item.locationID">{{item.location}}</option>
+        </select>
+      </div> -->
+      <div class="form-group col-md-6">
+        <label>Maturity Period</label>
+        <input class="form-control" name="maturityPeriod" [(ngModel)]="crops.maturityPeriod" required>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Crop Type</label>
+        <select class="custom-select" name="cropType" [(ngModel)]="crops.cropType" required>
+          <option value="" selected disabled hidden>Select Crop Type</option>
+          <option value="1">Organic</option>
+          <option value="2">Non-Organic</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Fertilizer Use</label>
+        <select class="custom-select" name="fertilizer" [(ngModel)]="crops.fertilizer" required>
+          <option value="" selected disabled hidden>Select</option>
+          <option value="10%-30%">10%-30%</option>
+          <option value="40%-70%">40%-70%</option>
+          <option value="80%-100%">80%-100%</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Pesticide Used</label>
+        <select class="custom-select" name="pesticideUsed" [(ngModel)]="crops.pesticideUsed" required>
+          <option value="" selected disabled hidden>Select</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!cropAdd.valid">{{CropID ? 'Update' : 'Save'}}</button>
+  </form>
+</div>
+<!--// Forms-3 -->

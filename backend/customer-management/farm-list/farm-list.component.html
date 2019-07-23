@@ -1,0 +1,20 @@
+<!-- Forms-3 -->
+<div class="outer-w3-agile mt-3">
+  <h4 class="tittle-w3-agileits mb-4">Farm List</h4>
+  <div class="row">
+    <div class="col-md-4 farm" *ngFor="let item of allFarmByUser">
+      <div class="thumbnail">
+        <img src="../assets/images/2.jpg" alt="Lights" style="width:100%">
+        <div class="caption">
+          <p class="farmN" [routerLink]="['/admin/customer-management/farm-detail', item.farmID]">{{item.farmName}}</p>
+          <p class="location">Bangalore</p>
+          <p class="plots">
+            <span style="color:red;">9</span>/38 plots available
+            <span class="price">Rs. 2500</span>
+          </p>
+          <p class="star">4.5 star</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

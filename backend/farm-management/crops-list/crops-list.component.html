@@ -1,0 +1,68 @@
+<!-- table4 -->
+<div class="outer-w3-agile mt-3">
+  <h4 class="tittle-w3-agileits mb-4">Crops</h4>
+  <button class="btn btn-primary" style="margin-bottom:5px;" *ngIf="userDetail.userType !=5" [routerLink]="['/admin/farm-management/add-crop']">Add Crop</button>
+
+  <div class="form-row" *ngIf="userDetail.userType != 5">
+    <div class="form-group col-md-6">
+      <select class="custom-select" name="farmName" [(ngModel)]="farmName" required (change)="getCropByFarm($event.target.value)">
+        <option value="" selected disabled hidden>Select Farm</option>
+        <option *ngFor="let item of allFarmByUser" [value]="item.farmID">{{item.farmName}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="table-responsive" style="height:300px;">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Select</th>
+          <th scope="col">Farm Name </th>
+          <th scope="col">Plot </th>
+          <th scope="col">Crop Name</th>
+          <th scope="col">Month</th>
+          <th scope="col">Stage</th>
+          <th scope="col">Maturity Period</th>
+          <th scope="col">Crop Type</th>
+          <th scope="col">Fertilizer</th>
+          <th scope="col">Pesticide Used</th>
+          <th *ngIf="userDetail.userType != 5">Status</th>
+          <th *ngIf="userDetail.userType != 5">Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of allCropByFarm">
+          <td><input type="checkbox" value="item.cropID"></td>
+          <td> {{item.farm}}</td>
+          <td> {{item.plot}}</td>
+          <td> {{item.cropName}}</td>
+          <td> {{item.month}}</td>
+          <td>
+            <span *ngIf="userDetail.userType == 5; else notShow">
+                {{item.stage}}                
+            </span>
+
+            <ng-template #notShow>
+              <input type="radio" name="stage" value="New" checked="checked" (click)="updateCropStage(item.cropID, 'New')"> New
+              <input type="radio" name="stage" value="Growing" checked="checked" (click)="updateCropStage(item.cropID, 'Growing')"> Growing
+              <input type="radio" name="stage" value="Harvesting" checked="checked" (click)="updateCropStage(item.cropID, 'Harvesting')"> Harvesting
+            </ng-template>
+           </td>
+            <td> {{item.maturityPeriod}}</td>
+            <td> {{item.cropType}}</td>
+            <td> {{item.fertilizer}}</td>
+            <td> {{item.pesticideUsed}}</td>
+            <td *ngIf="userDetail.userType != 5"> {{item.cropStatus == 1 ? 'Active' : 'Inactive'}}</td>
+            <td *ngIf="userDetail.userType != 5">
+              <button class="btn btn-primary" [routerLink]="['/admin/farm-management/add-crop', item.cropID]">Edit</button>
+              <button class="btn btn-success" *ngIf="item.cropStatus == 2" (click)="deleteCrop(item.cropID, 1)">Active</button>
+              <button class="btn btn-danger" *ngIf="item.cropStatus == 1" (click)="deleteCrop(item.cropID, 2)">Inactive</button>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-success">Pay Now</button>
+  </div>
+</div>
+<!--// table4 -->

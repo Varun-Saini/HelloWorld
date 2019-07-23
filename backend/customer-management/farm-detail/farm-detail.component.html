@@ -1,0 +1,40 @@
+<!-- Forms-3 -->
+<div class="outer-w3-agile mt-3">
+  <section>
+    <div class="row">
+      <div class="col-md-6 farm">
+        <div class="thumbnail">
+          <img src="../assets/images/2.jpg" alt="Lights" style="width:100%">
+        </div>
+      </div>
+      <div class="col-md-6 farm">
+        <h4>{{farmDetail.farmName}}</h4>
+        <p>
+          <i>Bangalore</i>
+        </p>
+        <h5 class="des_hed">Description:</h5>
+        <p class="des">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs.
+          The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of
+          Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.</p>
+        <p>Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator. The passage
+          is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De
+          Finibus Bonorum et Malorum for use in a type specimen book.</p>
+        <p class="manage">Managed By:
+          <span>
+            <i>Neha Saini</i>
+          </span>
+        </p>
+        <button class="btn btn-success" [routerLink]="['/admin/customer-management/crops-list', farmDetail.farmID]">Book Now</button>
+      </div>
+    </div>
+    <div class="row spec">
+      <h5 class="des_hed">Specification:</h5>
+
+      <p class="manage">Managed By:
+        <span>
+          <i>Neha Saini</i>
+        </span>
+      </p>
+    </div>
+  </section>
+</div>

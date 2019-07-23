@@ -1,0 +1,64 @@
+<!-- Sidebar Holder -->
+<nav id="sidebar">
+    <div class="sidebar-header">
+        <h1>
+            <a [routerLink]="['/admin/dashboard']">Farming</a>
+        </h1>
+        <span>F</span>
+    </div>
+    <div class="profile-bg"></div>
+    <ul>
+        <li class="active">
+            <a [routerLink]="['/admin/dashboard']" RouterLinkActive="active">
+                <i class="fas fa-th-large"></i>
+                Dashboard
+            </a>
+        </li>
+        <li *ngIf="showUser">
+            <a [routerLink]="['/admin/user-management']" RouterLinkActive="active">
+                <i class="fas fa-th-large"></i>
+                User Management
+            </a>
+        </li>
+        <li *ngIf="showFarm">
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                <i class="fas fa-laptop"></i>
+                Farm Management
+                <i class="fas fa-angle-down fa-pull-right"></i>
+            </a>
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a [routerLink]="['/admin/farm-management']" RouterLinkActive="active">Farm List</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/admin/farm-management/add-farm']" RouterLinkActive="active">Add Farm</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/admin/farm-management/crops-list']" RouterLinkActive="active">Crops List</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/admin/farm-management/add-crop']" RouterLinkActive="active">Add Crop</a>
+                </li>
+            </ul>
+        </li>
+
+        <li *ngIf="showCustomer">
+            <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false">
+                <i class="fas fa-laptop"></i>
+                Customer Manage.
+                <i class="fas fa-angle-down fa-pull-right"></i>
+            </a>
+            <ul class="collapse list-unstyled" id="homeSubmenu1">
+                <li *ngIf="showCustomerChild">
+                    <a [routerLink]="['/admin/customer-management/add-customer']" RouterLinkActive="active">Add Customer</a>
+                </li>
+                <li *ngIf="showCustomerChild">
+                    <a [routerLink]="['/admin/customer-management']" RouterLinkActive="active">Customer List</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/admin/customer-management/farm-list']" RouterLinkActive="active">Farm List</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>

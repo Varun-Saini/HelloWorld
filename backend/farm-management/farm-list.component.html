@@ -1,0 +1,39 @@
+<!-- table4 -->
+<div class="outer-w3-agile mt-3">
+  <h4 class="tittle-w3-agileits mb-4">Farms</h4>
+  <button class="btn btn-primary" style="margin-bottom:5px;" [routerLink]="['/admin/farm-management/add-farm']">Add Farms</button>
+  <div class="table-responsive" style="height:300px;">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Farm Owner</th>
+          <th scope="col">Farm Name </th>
+          <th scope="col"> Area(sqft) </th>
+          <th scope="col">Location</th>
+          <th scope="col">Units</th>
+          <th>Status</th>
+          <th>Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let item of allFarmByUser">
+          <th scope="row">{{item.farmOwner}} {{inputJson.input.companyCode}}</th>
+          <td>{{item.farmName}}</td>
+          <td>{{item.area}}</td>
+          <td>{{item.location}}</td>
+          <td>{{item.units}}</td>
+          <td>{{item.farmStatus == 1 ? 'Active' : 'Inactive'}}</td>
+          <td>
+            <button class="btn btn-primary" [routerLink]="['/admin/farm-management/add-farm', item.farmID]">Edit</button>
+            <button class="btn btn-success" *ngIf="item.farmStatus == 2" (click)="deleteFarm(item.farmID, 1)">Active</button>
+
+            <button class="btn btn-danger" *ngIf="item.farmStatus == 1" (click)="deleteFarm(item.farmID, 2)">Inactive</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!--// table4 -->

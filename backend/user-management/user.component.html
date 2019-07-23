@@ -1,0 +1,39 @@
+<!-- table4 -->
+<div class="outer-w3-agile mt-3">
+  <h4 class="tittle-w3-agileits mb-4">Users</h4>
+  <button class="btn btn-primary" style="margin-bottom:5px;" [routerLink]="['/admin/user-management/adduser']">Add User</button>
+  <div class="table-responsive" style="height:300px;">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col"> User Type </th>
+          <th scope="col"> Name </th>
+          <th scope="col"> Last Name </th>
+          <th scope="col"> Mobile </th>
+          <th scope="col"> Email </th>
+          <th scope="col"> Work Location </th>
+          <th>Status</th>
+          <th>Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of allUserList">
+          <th scope="row">{{item.userType}}</th>
+          <td>{{item.firstName}}</td>
+          <td>{{item.lastName}}</td>
+          <td>{{item.mobile}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.workLocation}}</td>
+          <td>{{item.status == 1 ? 'Active' : 'Inactive'}}</td>
+          <td>
+            <button class="btn btn-primary" [routerLink]="['/admin/user-management/adduser', item.userID]">Edit</button>
+            <button class="btn btn-success" *ngIf="item.status == 2" (click)="deleteUser(item.userID, 1)">Active</button>
+            <button class="btn btn-danger" *ngIf="item.status == 1" (click)="deleteUser(item.userID, 2)">Inactive</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!--// table4 -->
